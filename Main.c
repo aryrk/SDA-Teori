@@ -1,27 +1,42 @@
 #include <stdio.h>
+#include <string.h>
+#define JmlRak 20
 
-void IsiRak(char Rak[], int jml)
+void MakeNULL(char Rak[JmlRak])
 {
-    for (size_t i = 0; i < jml; i++)
+    for (size_t i = 0; i < JmlRak; i++)
+    {
+        Rak[i] = '\0';
+    }
+}
+void IsiRak(char Rak[JmlRak], int jml)
+{
+    MakeNULL(Rak);
+    for (int i = 0; i < jml; i++)
     {
         Rak[i] = 'A' + i;
     }
 }
 
-void MakeNULL(char Rak[])
+// HASNA
+
+// HASNA
+
+// ARYO
+void GeserKanan(char Rak[JmlRak], int Start)
 {
-    for (size_t i = 0; i < sizeof(Rak); i++)
+    for (size_t i = strlen(Rak); i >= Start; i--)
     {
-        Rak[i] = '\0';
+        Rak[i] = Rak[i - 1];
     }
 }
-
-// HASNA
-
-// HASNA
-
-// ARYO
-
+void GeserKiri(char Rak[JmlRak], int Start)
+{
+    for (size_t i = Start; i < strlen(Rak); i++)
+    {
+        Rak[i] = Rak[i + 1];
+    }
+}
 // ARYO
 
 // FARHAN
@@ -31,11 +46,22 @@ void MakeNULL(char Rak[])
 // ROHIID
 
 // ROHIID
+
+void print(char Rak[JmlRak])
+{
+    for (size_t i = 0; i < JmlRak; i++)
+    {
+        printf("%c, ", Rak[i]);
+    }
+}
 
 int main(int argc, char *argv[])
 {
 
-    char Rak[20];
+    char Rak[JmlRak];
+    IsiRak(Rak, 8);
+    GeserKiri(Rak, 1);
+    print(Rak);
 
     return 0;
 }
