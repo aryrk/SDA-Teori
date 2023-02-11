@@ -40,6 +40,18 @@ void GeserKiri(char Rak[JmlRak], int Start)
 // ARYO
 
 // FARHAN
+void tambahElemen(char *Array[], int posisi)
+{
+    // deklarasi
+    char inputan;
+
+    // menggeser elemen ke arah kanan
+    modulGeserKanan(&(*Array), posisi);
+
+    // membaca inputan user
+    scanf("%c", &inputan);
+    *Array[posisi] = inputan;
+}
 
 // FARHAN
 
