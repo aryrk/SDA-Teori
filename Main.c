@@ -90,17 +90,26 @@ void hapusElemen(char Array[JmlRak]){
 }
 
 // ROHIID
-
-// ROHIID
-
 void print(char Rak[JmlRak])
 {
     //	system("cls");
-    for (size_t i = 0; i < JmlRak; i++)
+    printf("\n");
+    for (int i = 0; i < JmlRak; i++)
     {
-        printf("%c, ", Rak[i]);
+        printf(" %c ", Rak[i]);
+        if ( (i+1) % 10 == 0) {
+            printf("\n");
+            for (int j = i - 9; j <= i; j++)
+            {
+                printf("[%d]", j);
+            }
+            printf("\n");
+        }
     }
 }
+// ROHIID
+
+
 
 int main(int argc, char *argv[])
 {
