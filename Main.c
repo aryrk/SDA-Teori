@@ -1,5 +1,4 @@
 #include <stdio.h>
-
 void IsiRak(char Rak[], int jml)
 {
     for (size_t i = 0; i < jml; i++)
@@ -25,6 +24,17 @@ void MakeNULL(char Rak[])
 // ARYO
 
 // FARHAN
+void tambahElemen(char *Array[], int posisi){
+	//deklarasi
+	char inputan;
+	
+	//menggeser elemen ke arah kanan
+	modulGeserKanan(&(*Array), posisi);
+	
+	//membaca inputan user
+	scanf("%c",&inputan);
+	*Array[posisi]=inputan;
+}
 
 // FARHAN
 
