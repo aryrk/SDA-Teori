@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdbool.h>
+
 void IsiRak(char Rak[], int jml)
 {
     for (size_t i = 0; i < jml; i++)
@@ -16,6 +18,16 @@ void MakeNULL(char Rak[])
 }
 
 // HASNA
+bool CekSpace(char Rak[]){
+
+    for (int i = 0; i < sizeof(Rak); i++)
+    {
+        if (Rak[i] == '\0')
+        {
+            return true;
+        }
+    }
+}
 
 // HASNA
 
