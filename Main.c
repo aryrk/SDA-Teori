@@ -101,7 +101,7 @@ void print(char Rak[JmlRak])
             printf("\n");
             for (int j = i - 9; j <= i; j++)
             {
-                printf("[%d]", j);
+                printf("[%d]", j + 1);
             }
             printf("\n");
         }
