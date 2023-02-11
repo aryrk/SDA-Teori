@@ -1,19 +1,10 @@
 #include <stdio.h>
-#include <stdbool.h>
-
 void IsiRak(char Rak[], int jml)
 {
-    for (size_t i = 0; i < jml; i++)
+    MakeNULL(Rak);
+    for (int i = 0; i < jml; i++)
     {
         Rak[i] = 'A' + i;
-    }
-}
-
-void MakeNULL(char Rak[])
-{
-    for (size_t i = 0; i < sizeof(Rak); i++)
-    {
-        Rak[i] = '\0';
     }
 }
 
@@ -32,20 +23,34 @@ bool CekSpace(char Rak[]){
 // HASNA
 
 // ARYO
-
+void GeserKanan(char Rak[JmlRak], int Start)
+{
+    for (size_t i = strlen(Rak); i >= Start; i--)
+    {
+        Rak[i] = Rak[i - 1];
+    }
+}
+void GeserKiri(char Rak[JmlRak], int Start)
+{
+    for (size_t i = Start; i < strlen(Rak); i++)
+    {
+        Rak[i] = Rak[i + 1];
+    }
+}
 // ARYO
 
 // FARHAN
-void tambahElemen(char *Array[], int posisi){
-	//deklarasi
-	char inputan;
-	
-	//menggeser elemen ke arah kanan
-	modulGeserKanan(&(*Array), posisi);
-	
-	//membaca inputan user
-	scanf("%c",&inputan);
-	*Array[posisi]=inputan;
+void tambahElemen(char Array[JmlRak], int posisi)
+{
+    // deklarasi
+    char inputan;
+
+    // menggeser elemen ke arah kanan
+    GeserKanan(Array, posisi);
+
+    // membaca inputan user
+    scanf("\n%c", &inputan);
+    Array[posisi] = inputan;
 }
 
 // FARHAN
@@ -54,10 +59,24 @@ void tambahElemen(char *Array[], int posisi){
 
 // ROHIID
 
+void print(char Rak[JmlRak])
+{
+    for (size_t i = 0; i < JmlRak; i++)
+    {
+        printf("%c, ", Rak[i]);
+    }
+}
+
 int main(int argc, char *argv[])
 {
 
-    char Rak[20];
+    char Rak[JmlRak];
+    IsiRak(Rak, 8);
+    print(Rak);
+
+    tambahElemen(Rak, 1);
+    // GeserKanan(Rak, 1);
+    print(Rak);
 
     return 0;
 }
