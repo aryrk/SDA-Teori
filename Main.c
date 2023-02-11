@@ -24,7 +24,7 @@ void IsiRak(char Rak[], int jml)
 // HASNA
 bool CekSpace(char Rak[JmlRak])
 {
-    if (strlen(Rak) - 1 == JmlRak)
+    if (strlen(Rak) == JmlRak)
     {
         return false;
     }
@@ -58,26 +58,36 @@ void tambahElemen(char Array[JmlRak])
 {
     // deklarasi
     int inputanPosisi;
-    char inputanNilai;
+	char inputanNilai;
 
-    // membaca inputan posisi
-    printf("\nMasukkan posisi : ");
+	// membaca inputan posisi
+	printf("\nMasukkan posisi : ");
     scanf("\n%d", &inputanPosisi);
-    if (inputanPosisi > strlen(Array))
-    {
-        inputanPosisi = strlen(Array) + 1;
-    }
-
+    
     // menggeser elemen ke arah kanan
     GeserKanan(Array, inputanPosisi);
-
+    
     // membaca inputan nilai
-    printf("\nMasukkan nilai : ");
+	printf("\nMasukkan nilai : ");
     scanf("\n%c", &inputanNilai);
-    Array[inputanPosisi - 1] = inputanNilai;
+    Array[inputanPosisi-1] = inputanNilai;
 }
 
 // FARHAN
+void hapusElemen(char Array[JmlRak]){
+	// dekalrasi
+	int inputPosisi;
+	
+	// membaca input posisi
+	printf("\nMasukkan posisi : ");
+	scanf("%d", &inputPosisi);
+	
+	// menggeser elemen ke kiri
+	GeserKiri(Array, inputPosisi - 1);
+	
+	// menghapus elemen terakhir
+	Array[strlen(Array)]='\0';
+}
 
 // ROHIID
 
@@ -100,25 +110,24 @@ int main(int argc, char *argv[])
     IsiRak(Rak, 8);
 
 Start:
+	system("cls");
     printf("\nKondisi Rak:\n");
     print(Rak);
 
 StartInteraksi:
-    printf("\n\nPilih aksi yang ingin dilakukan:\n1. Insert\n2. Delete\n3. Keluar\n:");
+    printf("\n\nPilih aksi yang ingin dilakukan:\n1. Insert\n2. Delete\n3. Keluar\nMasukkan input :");
     scanf("%d", &Pilihan);
     switch (Pilihan)
     {
     case 1:
-        if (CekSpace(Rak) == false)
+        if (CekSpace == false)
         {
-            printf("Storange penuh!");
-            getch();
             goto StartInteraksi;
         }
         tambahElemen(Rak);
         break;
     case 2:
-        // tambahElemen(Rak, 2);
+        hapusElemen(Rak);
         break;
     case 3:
         exit(0);
