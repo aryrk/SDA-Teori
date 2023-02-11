@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdbool.h>
+
 void IsiRak(char Rak[], int jml)
 {
     MakeNULL(Rak);
