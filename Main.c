@@ -22,14 +22,15 @@ void IsiRak(char Rak[], int jml)
 }
 
 // HASNA
-bool CekSpace(char Rak[JmlRak]){
-
-    for (int i = 0; i < strlen(Rak); i++)
+bool CekSpace(char Rak[JmlRak])
+{
+    if (strlen(Rak) == JmlRak)
     {
-        if (Rak[i] == '\0')
-        {
-            return true;
-        }
+        return false;
+    }
+    else
+    {
+        return true;
     }
 }
 
@@ -80,7 +81,7 @@ void tambahElemen(char Array[JmlRak])
 
 void print(char Rak[JmlRak])
 {
-//	system("cls");
+    //	system("cls");
     for (size_t i = 0; i < JmlRak; i++)
     {
         printf("%c, ", Rak[i]);
@@ -91,12 +92,33 @@ int main(int argc, char *argv[])
 {
 
     char Rak[JmlRak];
+    int Pilihan;
     IsiRak(Rak, 8);
+
+Start:
+    printf("\nKondisi Rak:\n");
     print(Rak);
 
-    tambahElemen(Rak);
-    // GeserKanan(Rak, 1);
-    print(Rak);
+StartInteraksi:
+    printf("\n\nPilih aksi yang ingin dilakukan:\n1. Insert\n2. Delete\n3. Keluar\n:");
+    scanf("%d", &Pilihan);
+    switch (Pilihan)
+    {
+    case 1:
+        if (CekSpace == false)
+        {
+            goto StartInteraksi;
+        }
+        tambahElemen(Rak);
+        break;
+    case 2:
+        // tambahElemen(Rak, 2);
+        break;
+    case 3:
+        exit(0);
+        break;
+    }
+    goto Start;
 
     return 0;
 }
