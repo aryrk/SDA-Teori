@@ -53,17 +53,23 @@ void GeserKiri(char Rak[JmlRak], int Start)
 // ARYO
 
 // FARHAN
-void tambahElemen(char Array[JmlRak], int posisi)
+void tambahElemen(char Array[JmlRak])
 {
     // deklarasi
-    char inputan;
+    int inputanPosisi;
+	char inputanNilai;
 
+	// membaca inputan posisi
+	printf("\nMasukkan posisi : ");
+    scanf("\n%d", &inputanPosisi);
+    
     // menggeser elemen ke arah kanan
-    GeserKanan(Array, posisi);
-
-    // membaca inputan user
-    scanf("\n%c", &inputan);
-    Array[posisi-1] = inputan;
+    GeserKanan(Array, inputanPosisi);
+    
+    // membaca inputan nilai
+	printf("\nMasukkan nilai : ");
+    scanf("\n%c", &inputanNilai);
+    Array[inputanPosisi-1] = inputanNilai;
 }
 
 // FARHAN
@@ -88,7 +94,7 @@ int main(int argc, char *argv[])
     IsiRak(Rak, 8);
     print(Rak);
 
-    tambahElemen(Rak, 1);
+    tambahElemen(Rak);
     // GeserKanan(Rak, 1);
     print(Rak);
 
