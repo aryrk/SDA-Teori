@@ -24,7 +24,7 @@ void IsiRak(char Rak[], int jml)
 // HASNA
 bool CekSpace(char Rak[JmlRak])
 {
-    if (strlen(Rak) == JmlRak)
+    if (strlen(Rak) - 1 == JmlRak)
     {
         return false;
     }
@@ -58,35 +58,40 @@ void tambahElemen(char Array[JmlRak])
 {
     // deklarasi
     int inputanPosisi;
-	char inputanNilai;
+    char inputanNilai;
 
-	// membaca inputan posisi
-	printf("\nMasukkan posisi : ");
+    // membaca inputan posisi
+    printf("\nMasukkan posisi : ");
     scanf("\n%d", &inputanPosisi);
-    
+    if (inputanPosisi > strlen(Array))
+    {
+        inputanPosisi = strlen(Array) + 1;
+    }
+
     // menggeser elemen ke arah kanan
     GeserKanan(Array, inputanPosisi);
-    
+
     // membaca inputan nilai
-	printf("\nMasukkan nilai : ");
+    printf("\nMasukkan nilai : ");
     scanf("\n%c", &inputanNilai);
-    Array[inputanPosisi-1] = inputanNilai;
+    Array[inputanPosisi - 1] = inputanNilai;
 }
 
 // FARHAN
-void hapusElemen(char Array[JmlRak]){
-	// dekalrasi
-	int inputPosisi;
-	
-	// membaca input posisi
-	printf("\nMasukkan posisi : ");
-	scanf("%d", &inputPosisi);
-	
-	// menggeser elemen ke kiri
-	GeserKiri(Array, inputPosisi - 1);
-	
-	// menghapus elemen terakhir
-	Array[strlen(Array)]='\0';
+void hapusElemen(char Array[JmlRak])
+{
+    // dekalrasi
+    int inputPosisi;
+
+    // membaca input posisi
+    printf("\nMasukkan posisi : ");
+    scanf("%d", &inputPosisi);
+
+    // menggeser elemen ke kiri
+    GeserKiri(Array, inputPosisi - 1);
+
+    // menghapus elemen terakhir
+    Array[JmlRak - 1] = '\0';
 }
 
 // ROHIID
@@ -96,20 +101,19 @@ void print(char Rak[JmlRak])
     printf("\n");
     for (int i = 0; i < JmlRak; i++)
     {
-        printf(" %c ", Rak[i]);
-        if ( (i+1) % 10 == 0) {
+        printf(" %c  ", Rak[i]);
+        if ((i + 1) % 10 == 0)
+        {
             printf("\n");
             for (int j = i - 9; j <= i; j++)
             {
-                printf("[%d]", j + 1);
+                printf("[%02d]", j + 1);
             }
             printf("\n");
         }
     }
 }
 // ROHIID
-
-
 
 int main(int argc, char *argv[])
 {
@@ -119,7 +123,7 @@ int main(int argc, char *argv[])
     IsiRak(Rak, 8);
 
 Start:
-	system("cls");
+    system("cls");
     printf("\nKondisi Rak:\n");
     print(Rak);
 
@@ -129,8 +133,10 @@ StartInteraksi:
     switch (Pilihan)
     {
     case 1:
-        if (CekSpace == false)
+        if (CekSpace(Rak) == false)
         {
+            printf("Storange penuh!");
+            getch();
             goto StartInteraksi;
         }
         tambahElemen(Rak);
