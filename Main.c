@@ -1,5 +1,16 @@
 #include <stdio.h>
+#include <string.h>
+#include <windows.h>
 #include <stdbool.h>
+#define JmlRak 20
+
+void MakeNULL(char Rak[JmlRak])
+{
+    for (size_t i = 0; i < JmlRak; i++)
+    {
+        Rak[i] = '\0';
+    }
+}
 
 void IsiRak(char Rak[], int jml)
 {
@@ -11,9 +22,9 @@ void IsiRak(char Rak[], int jml)
 }
 
 // HASNA
-bool CekSpace(char Rak[]){
+bool CekSpace(char Rak[JmlRak]){
 
-    for (int i = 0; i < sizeof(Rak); i++)
+    for (int i = 0; i < strlen(Rak); i++)
     {
         if (Rak[i] == '\0')
         {
@@ -52,7 +63,7 @@ void tambahElemen(char Array[JmlRak], int posisi)
 
     // membaca inputan user
     scanf("\n%c", &inputan);
-    Array[posisi] = inputan;
+    Array[posisi-1] = inputan;
 }
 
 // FARHAN
@@ -63,6 +74,7 @@ void tambahElemen(char Array[JmlRak], int posisi)
 
 void print(char Rak[JmlRak])
 {
+//	system("cls");
     for (size_t i = 0; i < JmlRak; i++)
     {
         printf("%c, ", Rak[i]);
